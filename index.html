@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/lock.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/9e0a62895a.js" crossorigin="anonymous"></script>
+    <title>Profesional Password Generator</title>
+</head>
+<body>
+    <div class="full__screen">
+        <div class="card">
+            <div class="title">
+                <p>Password Generator</p>
+            </div>
+            <div class="ready__password">
+                <div class="ready__text">
+                    <p id="copy-text">dfdfdfdfdfdfdffdf</p>
+                </div>
+                <div class="copy__icon">
+                    <i id="copyIcon" class="fa-regular fa-copy" onclick="copyPassword()"></i>
+                </div>
+            </div>
+            <div class="main__part">
+                <div class="character__lenght">
+                    <div class="text">
+                        <div class="character__title">
+                            <p>Character Length</p>
+                        </div>
+                        <div class="character__number">
+                            <p class="pForLinerNumber">10</p>
+                        </div>
+                    </div>
+                    <div class="liner">
+                        <div class="range__input">
+                            <span class="progress__before"></span>
+                            <input type="range" min="0" max="20" value="10">
+                            <span class="progress__after"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="includes">
+                    <label class="include include1">
+                        <input type="checkbox" name="" id="in-no1">
+                        <span id="in-span1"></span>
+                        <i id="in-check1" class="fa-solid fa-square-check display__none"></i>
+                        <p>Include Uppercase Letters</p>
+                    </label>
+                    <label class="include include2">
+                        <input type="checkbox" name="" id="in-no2">
+                        <span id="in-span2"></span>
+                        <i id="in-check2" class="fa-solid fa-square-check display__none"></i>
+                        <p>Include Lowercase Letters</p>
+                    </label>
+                    <label class="include include3">
+                        <input type="checkbox" name="" id="in-no3">
+                        <span id="in-span3"></span>
+                        <i id="in-check3" class="fa-solid fa-square-check display__none"></i>
+                        <p>Include Numbers</p>
+                    </label>
+                    <label class="include include4">
+                        <input type="checkbox" name="" id="in-no4">
+                        <span id="in-span4"></span>
+                        <i id="in-check4" class="fa-solid fa-square-check display__none"></i>
+                        <p>Include Symbols</p>
+                    </label>
+                </div>
+                <div class="strength">
+                    <div class="strenght__title">
+                        <p>strength</p>
+                    </div>
+                    <div class="strenght__type">
+                        <div class="type">
+                            <p id="typeOfDanger"></p>
+                        </div>
+                        <div class="squares">
+                            <label for="square1" class="checkbox">
+                                <input id="square1" type="checkbox">
+                                <span class="span1"></span>
+                            </label>
+                            <label for="square2" class="checkbox">
+                                <input id="square2" type="checkbox">
+                                <span class="span2"></span>
+                            </label>
+                            <label for="square3" class="checkbox">
+                                <input id="square3" type="checkbox">
+                                <span class="span3"></span>
+                            </label>
+                            <label for="square4" class="checkbox">
+                                <input id="square4" type="checkbox">
+                                <span class="span4"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="button">
+                    <div class="button__title">
+                        <p>generate</p>
+                    </div>
+                    <div class="narrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="script.js">
+
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,310 @@
+:root {
+    --background-lighter: #14131A;
+    --background-dark: #000000;
+    --light-green: #8cf08a;
+    --light-letters: #E6E5E9;
+    --background-strength: #18171E;
+    --background-card: #24232A;
+    --dark-letters: #79807a;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    background: linear-gradient(var(--background-lighter), var(--background-dark));
+    height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.full__screen {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title p {
+    margin: 0;
+    color: var(--dark-letters);
+    font-size: 1.5rem;
+}
+
+.ready__password {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--background-card);
+}
+
+.ready__password .ready__text {
+    text-transform: uppercase;
+    color: var(--dark-letters);
+    font-size: 2rem;
+    font-weight: 800;
+}
+.ready__password .ready__text p {
+    margin: 0;
+}
+
+.copy__icon .fa-regular.fa-copy, .copy__icon .fa-solid.fa-copy {
+    color: var(--light-green);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.main__part {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--background-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.character__lenght {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.character__lenght .text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+
+}
+.character__lenght .text .character__title {
+    color: var(--light-letters);
+    font-size: 1rem;
+
+}
+.character__lenght .text p {
+    margin: 0;
+}
+
+.character__lenght .text .character__number {
+    color: var(--light-green);
+    font-size: 1.5rem;
+}
+.character__lenght .liner {
+    width: 100%;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+    /* background-color: var(--background-strength); */
+    height: 8px;
+    position: relative;
+    z-index: 1;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 100%;
+    background-color: var(--light-letters);
+    /* outline: 2px solid var(--light-letters); */
+    margin-top: -4px;
+    z-index: 1;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+    outline: 2px solid var(--light-green);
+    background-color: var(--background-dark);
+    height: 16px;
+    width: 16px;
+    margin-top: -2px;
+}
+
+
+.range__input {
+    position: relative;
+}
+
+.progress__before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 8px;
+    margin-top: 6px;
+    background-color: var(--light-green);
+    z-index: 0;
+}
+.progress__after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 8px;
+    margin-top: 6px;
+    background-color: var(--background-strength);
+    z-index: 0;
+}
+
+.character__lenght .liner input {
+    width: 100%;
+}
+
+
+
+.display__none {
+    display: none !important;
+}
+
+.includes {
+    display: flex;
+    flex-direction: column;
+    color: var(--light-letters);
+}
+
+.include {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    padding: 1rem 0;
+    font-size: 1rem;
+}
+
+.include p {
+    margin: 0;
+}
+
+.include input {
+    display: none;
+}
+
+.include span {
+    width: 14px;
+    height: 15px;
+    border: 2px solid var(--light-letters);
+}
+
+.include span:hover {
+    border: 2px solid var(--light-green);
+    cursor: pointer;
+}
+
+.fa-solid.fa-square-check {
+    color: var(--light-green);
+}
+
+.strength {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    background-color: var(--background-strength);
+    padding: 0 1rem;
+}
+.strenght__title {
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: var(--dark-letters);
+}
+.strenght__title p {
+    margin: 0;
+}
+.strenght__type {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+.strenght__type .type p {
+    margin: 0;
+    color: var(--light-letters);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.squares {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.squares input[type="checkbox"] {
+    display: none;
+}
+
+.squares span {
+    display: block;
+    width: 7px;
+    height: 20px;
+    border: 1px solid var(--light-letters);
+    
+}
+
+.danger {
+    border: 1px solid hsl(0, 100%, 60%) !important;
+    background-color: hsl(0, 100%, 60%);
+}
+
+.easy {
+    border: 1px solid hsl(39, 100%, 60%) !important;
+    background-color: hsl(39, 100%, 60%);
+}
+
+.medium {
+    border: 1px solid hsl(60, 100%, 60%) !important;
+    background-color: hsl(60, 100%, 60%);
+}
+
+.hard {
+    border: 1px solid hsl(120, 100%, 60%) !important;
+    background-color: hsl(120, 100%, 60%);
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 60px;
+    border: 2px solid var(--light-green);
+    background-color: var(--light-green);
+    margin-top: 30px;
+}
+
+.button .button__title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+.button .button__title p {
+    margin: 0;
+}
