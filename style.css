@@ -201,9 +201,9 @@ input[type="range"]::-webkit-slider-thumb:active {
     margin: 0;
 }
 
-.include input {
+/* .include input {
     display: none;
-}
+} */
 
 .include span {
     width: 14px;

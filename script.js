@@ -25,7 +25,6 @@ range.addEventListener("input", function(event){
     progressAfter.style = `width:${100-percent}%`
     console.log(event.target.max)
 
-
     placeForNumbersFromLiner.textContent = ""
     placeForNumbersFromLiner.textContent = event.target.value
 })
@@ -34,9 +33,11 @@ range.addEventListener("input", function(event){
 let firstCheck = document.querySelector("#in-check1")
 let firstSpan = document.querySelector("#in-span1")
 let firstcheckButton = document.querySelector("#in-no1")
+
 firstSpan.addEventListener("click", function(event){
     firstSpan.classList.toggle("display__none")
     firstCheck.classList.toggle("display__none")
+    console.log(firstcheckButton.checked)
 })
 firstCheck.addEventListener("click", function(event){
     firstSpan.classList.toggle("display__none")
@@ -128,3 +129,4 @@ fourthSquare.addEventListener("click", function(){
         typeOfDanger.textContent = ""
     }
 })
+
