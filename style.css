@@ -188,22 +188,26 @@ input[type="range"]::-webkit-slider-thumb:active {
     color: var(--light-letters);
 }
 
+.one__include {
+    padding: 1rem 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
 .include {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 20px;
-    padding: 1rem 0;
+    
     font-size: 1rem;
 }
-
 .include p {
     margin: 0;
 }
-
-/* .include input {
+.include input {
     display: none;
-} */
+}
 
 .include span {
     width: 14px;

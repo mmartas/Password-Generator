@@ -23,62 +23,86 @@ range.addEventListener("input", function(event){
 
     progressBefore.style = `width:${percent}%`;
     progressAfter.style = `width:${100-percent}%`
-    console.log(event.target.max)
+    console.log(event.target.value)
 
     placeForNumbersFromLiner.textContent = ""
     placeForNumbersFromLiner.textContent = event.target.value
 })
 
 
-let firstCheck = document.querySelector("#in-check1")
-let firstSpan = document.querySelector("#in-span1")
-let firstcheckButton = document.querySelector("#in-no1")
 
-firstSpan.addEventListener("click", function(event){
-    firstSpan.classList.toggle("display__none")
-    firstCheck.classList.toggle("display__none")
-    console.log(firstcheckButton.checked)
-})
-firstCheck.addEventListener("click", function(event){
-    firstSpan.classList.toggle("display__none")
-    firstCheck.classList.toggle("display__none")
-})
 
-let secondCheck = document.querySelector("#in-check2")
-let secondSpan = document.querySelector("#in-span2")
-let secondCheckButton = document.querySelector("#in-no2")
-secondSpan.addEventListener("click", function(event){
-    secondSpan.classList.toggle("display__none")
-    secondCheck.classList.toggle("display__none")
-})
-secondCheck.addEventListener("click", function(event){
-    secondSpan.classList.toggle("display__none")
-    secondCheck.classList.toggle("display__none")
+let includeFirst = document.querySelector(".include1")
+let realButtonFirst = document.querySelector("#in-no1")
+let fullButtonFirst = document.querySelector("#in-check1")
+let emptyButtonFirst = document.querySelector("#in-span1")
+includeFirst.addEventListener("change", function(event){
+    emptyButtonFirst.classList.toggle("display__none")
+    fullButtonFirst.classList.toggle("display__none")
+    if(realButtonFirst.checked) {
+        emptyButtonFirst.classList.add("display__none")
+        fullButtonFirst.classList.remove("display__none")
+    }
+    console.log(realButtonFirst.checked)
 })
 
-let thirdCheck = document.querySelector("#in-check3")
-let thirdSpan = document.querySelector("#in-span3")
-let thirdCheckButton = document.querySelector("#in-no3")
-thirdSpan.addEventListener("click", function(event){
-    thirdSpan.classList.toggle("display__none")
-    thirdCheck.classList.toggle("display__none")
-})
-thirdCheck.addEventListener("click", function(event){
-    thirdSpan.classList.toggle("display__none")
-    thirdCheck.classList.toggle("display__none")
+let includeSecond = document.querySelector(".include2")
+let realButtonSecond = document.querySelector("#in-no2")
+let fullButtonSecond = document.querySelector("#in-check2")
+let emptyButtonSecond = document.querySelector("#in-span2")
+includeSecond.addEventListener("change", function(event){
+    emptyButtonSecond.classList.toggle("display__none")
+    fullButtonSecond.classList.toggle("display__none")
+    if(realButtonSecond.checked) {
+        emptyButtonSecond.classList.add("display__none")
+        fullButtonSecond.classList.remove("display__none")
+    }
+    console.log(realButtonSecond.checked)
 })
 
-let fourthCheck = document.querySelector("#in-check4")
-let fourthSpan = document.querySelector("#in-span4")
-let fourthCheckButton = document.querySelector("#in-no4")
-fourthSpan.addEventListener("click", function(event){
-    fourthSpan.classList.toggle("display__none")
-    fourthCheck.classList.toggle("display__none")
+let includeThird = document.querySelector(".include3")
+let realButtonThird = document.querySelector("#in-no3")
+let fullButtonThird = document.querySelector("#in-check3")
+let emptyButtonThird = document.querySelector("#in-span3")
+includeThird.addEventListener("change", function(event){
+    emptyButtonThird.classList.toggle("display__none")
+    fullButtonThird.classList.toggle("display__none")
+    if(realButtonThird.checked) {
+        emptyButtonThird.classList.add("display__none")
+        fullButtonThird.classList.remove("display__none")
+    }
+    console.log(realButtonThird.checked)
 })
-fourthCheck.addEventListener("click", function(event){
-    fourthSpan.classList.toggle("display__none")
-    fourthCheck.classList.toggle("display__none")
+
+let includeFourth = document.querySelector(".include4")
+let realButtonFourth = document.querySelector("#in-no4")
+let fullButtonFourth = document.querySelector("#in-check4")
+let emptyButtonFourth = document.querySelector("#in-span4")
+includeFourth.addEventListener("change", function(event){
+    emptyButtonFourth.classList.toggle("display__none")
+    fullButtonFourth.classList.toggle("display__none")
+    if(realButtonFourth.checked) {
+        emptyButtonFourth.classList.add("display__none")
+        fullButtonFourth.classList.remove("display__none")
+    }
+    console.log(realButtonFourth.checked)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 let firstSquare = document.querySelector(".span1")
@@ -129,4 +153,3 @@ fourthSquare.addEventListener("click", function(){
         typeOfDanger.textContent = ""
     }
 })
-
