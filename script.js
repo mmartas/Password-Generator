@@ -12,12 +12,11 @@ function copyPassword() {
       });
     }
 
+// POSUVNÍK S VOLBOU DÉLKY HESLA
 let range = document.querySelector("[type=range]")
 let progressBefore = document.querySelector(".progress__before")
 let progressAfter = document.querySelector(".progress__after")
-
 let placeForNumbersFromLiner = document.querySelector(".pForLinerNumber")
-
 range.addEventListener("input", function(event){
     let percent = ((event.target.value - event.target.min) / (event.target.max - event.target.min)) * 100;
 
@@ -30,8 +29,7 @@ range.addEventListener("input", function(event){
 })
 
 
-
-
+// VOLBA 1
 let includeFirst = document.querySelector(".include1")
 let realButtonFirst = document.querySelector("#in-no1")
 let fullButtonFirst = document.querySelector("#in-check1")
@@ -46,6 +44,7 @@ includeFirst.addEventListener("change", function(event){
     console.log(realButtonFirst.checked)
 })
 
+// VOLBA 2
 let includeSecond = document.querySelector(".include2")
 let realButtonSecond = document.querySelector("#in-no2")
 let fullButtonSecond = document.querySelector("#in-check2")
@@ -60,6 +59,7 @@ includeSecond.addEventListener("change", function(event){
     console.log(realButtonSecond.checked)
 })
 
+// VOLBA 3
 let includeThird = document.querySelector(".include3")
 let realButtonThird = document.querySelector("#in-no3")
 let fullButtonThird = document.querySelector("#in-check3")
@@ -74,6 +74,7 @@ includeThird.addEventListener("change", function(event){
     console.log(realButtonThird.checked)
 })
 
+// VOLBA 4
 let includeFourth = document.querySelector(".include4")
 let realButtonFourth = document.querySelector("#in-no4")
 let fullButtonFourth = document.querySelector("#in-check4")
