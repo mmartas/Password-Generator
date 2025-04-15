@@ -21,12 +21,85 @@ range.addEventListener("input", function(event){
     let percent = ((event.target.value - event.target.min) / (event.target.max - event.target.min)) * 100;
 
     progressBefore.style = `width:${percent}%`;
-    progressAfter.style = `width:${100-percent}%`
-    console.log(event.target.value)
+    progressAfter.style = `width:${100-percent}%`;
+    //console.log(event.target.value)
 
     placeForNumbersFromLiner.textContent = ""
     placeForNumbersFromLiner.textContent = event.target.value
+    saveLinerNumber(event.target.value)
 })
+
+
+
+function saveLinerNumber(value) {
+    let linerNumber = value
+
+    if(linerNumber >= 1 && linerNumber <= 5){
+        firstSquareColor()
+    } else if(linerNumber > 5 && linerNumber <= 8) {
+        secondSquareColor()
+    } else if(linerNumber > 8 && linerNumber <= 12) {
+        thirdSquareColor()
+    } else {
+        fourthSquareColor()
+    }
+}
+
+function clearAllClassesSquare(){
+    [firstSquare, secondSquare, thirdSquare, fourthSquare].forEach(function(oneSquare){
+        oneSquare.classList.remove("danger", "easy", "medium", "safe")
+    })
+    typeOfDanger.textContent = ""
+}
+
+let firstSquare = document.querySelector(".span1")
+let secondSquare = document.querySelector(".span2")
+let thirdSquare = document.querySelector(".span3")
+let fourthSquare = document.querySelector(".span4")
+
+let typeOfDanger = document.querySelector("#typeOfDanger")
+
+
+
+
+function firstSquareColor(){
+    clearAllClassesSquare()
+    firstSquare.classList.add("danger")
+    typeOfDanger.textContent = "danger"
+    return true
+}
+
+function secondSquareColor(){
+    clearAllClassesSquare()
+    firstSquare.classList.add("easy")
+    secondSquare.classList.add("easy")
+    typeOfDanger.textContent = "easy"
+    return true
+}
+
+function thirdSquareColor(){
+    clearAllClassesSquare()
+    firstSquare.classList.add("medium")
+    secondSquare.classList.add("medium")
+    thirdSquare.classList.add("medium")
+    typeOfDanger.textContent = "medium"
+    return true
+}
+
+function fourthSquareColor(){
+    clearAllClassesSquare()
+    firstSquare.classList.add("safe")
+    secondSquare.classList.add("safe")
+    thirdSquare.classList.add("safe")
+    fourthSquare.classList.add("safe")
+    typeOfDanger.textContent = "safe"
+    return true
+}
+
+
+
+
+
 
 
 // VOLBA 1
@@ -41,7 +114,7 @@ includeFirst.addEventListener("change", function(event){
         emptyButtonFirst.classList.add("display__none")
         fullButtonFirst.classList.remove("display__none")
     }
-    console.log(realButtonFirst.checked)
+    //console.log(realButtonFirst.checked)
 })
 
 // VOLBA 2
@@ -56,7 +129,7 @@ includeSecond.addEventListener("change", function(event){
         emptyButtonSecond.classList.add("display__none")
         fullButtonSecond.classList.remove("display__none")
     }
-    console.log(realButtonSecond.checked)
+    //console.log(realButtonSecond.checked)
 })
 
 // VOLBA 3
@@ -71,7 +144,7 @@ includeThird.addEventListener("change", function(event){
         emptyButtonThird.classList.add("display__none")
         fullButtonThird.classList.remove("display__none")
     }
-    console.log(realButtonThird.checked)
+    //console.log(realButtonThird.checked)
 })
 
 // VOLBA 4
@@ -86,71 +159,5 @@ includeFourth.addEventListener("change", function(event){
         emptyButtonFourth.classList.add("display__none")
         fullButtonFourth.classList.remove("display__none")
     }
-    console.log(realButtonFourth.checked)
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-let firstSquare = document.querySelector(".span1")
-let secondSquare = document.querySelector(".span2")
-let thirdSquare = document.querySelector(".span3")
-let fourthSquare = document.querySelector(".span4")
-
-let typeOfDanger = document.querySelector("#typeOfDanger")
-
-firstSquare.addEventListener("click", function(){
-    firstSquare.classList.toggle("danger")
-    if(firstSquare.classList.contains("danger")){
-        typeOfDanger.textContent = "danger"
-    } else {
-        typeOfDanger.textContent = ""
-    }
-})
-
-secondSquare.addEventListener("click", function(){
-    firstSquare.classList.toggle("easy")
-    secondSquare.classList.toggle("easy")
-    if(firstSquare.classList.contains("easy") & secondSquare.classList.contains("easy")){
-        typeOfDanger.textContent = "easy"
-    } else {
-        typeOfDanger.textContent = ""
-    }
-})
-
-thirdSquare.addEventListener("click", function(){
-    firstSquare.classList.toggle("medium")
-    secondSquare.classList.toggle("medium")
-    thirdSquare.classList.toggle("medium")
-    if(firstSquare.classList.contains("medium") & secondSquare.classList.contains("medium") & thirdSquare.classList.contains("medium")){
-        typeOfDanger.textContent = "medium"
-    } else {
-        typeOfDanger.textContent = ""
-    }
-})
-
-fourthSquare.addEventListener("click", function(){
-    firstSquare.classList.toggle("hard")
-    secondSquare.classList.toggle("hard")
-    thirdSquare.classList.toggle("hard")
-    fourthSquare.classList.toggle("hard")
-    if(firstSquare.classList.contains("hard") & secondSquare.classList.contains("hard") & thirdSquare.classList.contains("hard") & fourthSquare.classList.contains("hard")){
-        typeOfDanger.textContent = "hard"
-    } else {
-        typeOfDanger.textContent = ""
-    }
+    //console.log(realButtonFourth.checked)
 })
