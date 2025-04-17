@@ -22,29 +22,59 @@ range.addEventListener("input", function(event){
 
     progressBefore.style = `width:${percent}%`;
     progressAfter.style = `width:${100-percent}%`;
-    //console.log(event.target.value)
 
     placeForNumbersFromLiner.textContent = ""
     placeForNumbersFromLiner.textContent = event.target.value
     saveLinerNumber(event.target.value)
+    if(countOfChecked().length === 0 && linerNumber > 5) {
+        clearAllClassesSquare()
+    } else {
+        checkingCheckedIncludes()
+    }
 })
 
-
-
+// ZJIŠTĚNÍ POČTU NA POSUVNÍKU
+let linerNumber
 function saveLinerNumber(value) {
-    let linerNumber = value
+    linerNumber = value
+}
 
-    if(linerNumber >= 1 && linerNumber <= 5){
+// PODLE POČTU NA POSUVNÍKU A ZAŠKRTNUTÝCH PODMÍNEK VYPSÁNÍ BEZPEČNOSTI HESLA
+function checkingCheckedIncludes() {
+    if(countOfChecked().length === 0 && linerNumber > 5) {
+        clearAllClassesSquare()
+    }
+
+    if(linerNumber <= 5 && countOfChecked().length <= 4){
         firstSquareColor()
-    } else if(linerNumber > 5 && linerNumber <= 8) {
+    }
+
+    if(linerNumber > 5 && linerNumber <= 8 && countOfChecked().length <= 2){
+       firstSquareColor()
+    } else if (linerNumber > 5 && linerNumber <= 8 && countOfChecked().length > 2){
         secondSquareColor()
-    } else if(linerNumber > 8 && linerNumber <= 12) {
+    }
+
+    if(linerNumber > 8 && linerNumber <= 12 && countOfChecked().length <= 1){
+        firstSquareColor()
+    } else if (linerNumber > 8 && linerNumber <= 12 && countOfChecked().length > 1 && countOfChecked().length <= 3){
+        secondSquareColor()
+    } else if (linerNumber > 8 && linerNumber <= 12 && countOfChecked().length > 3){
         thirdSquareColor()
-    } else {
+    }
+
+    if(linerNumber > 12 && countOfChecked().length === 1){
+        firstSquareColor()
+    } else if(linerNumber > 12 && countOfChecked().length === 2) {
+        secondSquareColor()
+    } else if(linerNumber > 12 && countOfChecked().length === 3) {
+        thirdSquareColor()
+    } else if(linerNumber > 12 && countOfChecked().length === 4) {
         fourthSquareColor()
     }
 }
 
+//ZHASNUTÍ VŠECH TROJÚHELNÍČKŮ
 function clearAllClassesSquare(){
     [firstSquare, secondSquare, thirdSquare, fourthSquare].forEach(function(oneSquare){
         oneSquare.classList.remove("danger", "easy", "medium", "safe")
@@ -52,16 +82,12 @@ function clearAllClassesSquare(){
     typeOfDanger.textContent = ""
 }
 
+//OBARVENÍ OBDÉLNÍČKŮ PODLE BEZPEČNOSTI
 let firstSquare = document.querySelector(".span1")
 let secondSquare = document.querySelector(".span2")
 let thirdSquare = document.querySelector(".span3")
 let fourthSquare = document.querySelector(".span4")
-
 let typeOfDanger = document.querySelector("#typeOfDanger")
-
-
-
-
 function firstSquareColor(){
     clearAllClassesSquare()
     firstSquare.classList.add("danger")
@@ -96,12 +122,6 @@ function fourthSquareColor(){
     return true
 }
 
-
-
-
-
-
-
 // VOLBA 1
 let includeFirst = document.querySelector(".include1")
 let realButtonFirst = document.querySelector("#in-no1")
@@ -115,6 +135,7 @@ includeFirst.addEventListener("change", function(event){
         fullButtonFirst.classList.remove("display__none")
     }
     //console.log(realButtonFirst.checked)
+    checkingCheckedIncludes()
 })
 
 // VOLBA 2
@@ -130,6 +151,7 @@ includeSecond.addEventListener("change", function(event){
         fullButtonSecond.classList.remove("display__none")
     }
     //console.log(realButtonSecond.checked)
+    checkingCheckedIncludes()
 })
 
 // VOLBA 3
@@ -145,6 +167,7 @@ includeThird.addEventListener("change", function(event){
         fullButtonThird.classList.remove("display__none")
     }
     //console.log(realButtonThird.checked)
+    checkingCheckedIncludes()
 })
 
 // VOLBA 4
@@ -160,4 +183,12 @@ includeFourth.addEventListener("change", function(event){
         fullButtonFourth.classList.remove("display__none")
     }
     //console.log(realButtonFourth.checked)
+    checkingCheckedIncludes()
 })
+
+// POČET ZAŠKRTNUTÝCH PODMÍNEK
+function countOfChecked() {
+    return [realButtonFirst, realButtonSecond, realButtonThird, realButtonFourth]
+    .filter(oneCheck => oneCheck.checked)
+    .map(oneCheck => oneCheck.id)
+}
