@@ -221,47 +221,53 @@ let generateButton = document.querySelector(".button")
 
 
 generateButton.addEventListener("click", function(event){
+    let myBigLetters
+    let myUppercase = []
     if(realButtonFirst.checked){
-        let myBigLetters
-        let myUppercase = []
         for(let i = 1; i <= linerNumber; i++){
             let randomNumber = Math.floor(Math.random() * bigLetters.length)
             myBigLetters = bigLetters[randomNumber]
             myUppercase.push(myBigLetters)
         }
-        console.log(myUppercase)
+        //console.log(myUppercase)
     }
 
+    let mySmallLetters
+    let myLowercase = []
     if(realButtonSecond.checked){
-        let mySmallLetters
-        let myLowercase = []
         for(let i = 1; i <= linerNumber; i++){
             let randomNumber = Math.floor(Math.random() * smallLetters.length)
             mySmallLetters = smallLetters[randomNumber]
             myLowercase.push(mySmallLetters)
         }
-        console.log(myLowercase)
+        //console.log(myLowercase)
     }
 
+    let myNumber
+    let myNumbers = []
     if(realButtonThird.checked){
-        let myNumber
-        let myNumbers = []
         for(let i = 1; i <= linerNumber; i++){
             let randomNumber = Math.floor(Math.random() * numbers.length)
             myNumber = numbers[randomNumber]
             myNumbers.push(myNumber)
         }
-        console.log(myNumbers)
+        //console.log(myNumbers)
     }
 
+    let mySymbol
+    let mySymbols = []
     if(realButtonFourth.checked){
-        let mySymbol
-        let mySymbols = []
         for(let i = 1; i <= linerNumber; i++){
             let randomNumber = Math.floor(Math.random() * specialSymbols.length)
             mySymbol = specialSymbols[randomNumber]
             mySymbols.push(mySymbol)
         }
-        console.log(mySymbols)
+        //console.log(mySymbols)
     }
+
+    let allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+
+    console.log(allCharacters)
+
+
 })
