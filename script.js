@@ -192,3 +192,49 @@ function countOfChecked() {
     .filter(oneCheck => oneCheck.checked)
     .map(oneCheck => oneCheck.id)
 }
+
+
+
+let bigLetters = [
+    "A", "B", "C", "D", "E", "F", "G",
+    "H", "I", "J", "K", "L", "M", "N",
+    "O", "P", "Q", "R", "S", "T", "U",
+    "V", "W", "X", "Y", "Z"
+];
+let smallLetters = [
+    "a", "b", "c", "d", "e", "f", "g",
+    "h", "i", "j", "k", "l", "m", "n",
+    "o", "p", "q", "r", "s", "t", "u",
+    "v", "w", "x", "y", "z"
+];
+let numbers = [0, 1, 2, 3, 4, 5 , 6, 7, 8, 9]
+let specialSymbols = [
+    "!", "@", "#", "$", "%", "^", "&", "*",
+    "(", ")", "-", "_", "=", "+", "[", "]",
+    "{", "}", ";", ":", "'", "\"", ",", ".",
+    "<", ">", "/", "?", "|", "`", "~"
+];
+
+let generateButton = document.querySelector(".button")
+
+generateButton.addEventListener("click", function(event){
+    if(realButtonFirst.checked){
+        let myLetters
+        let myUppercase = []
+        for(let i = 1; i <= linerNumber; i++){
+            let randomN = Math.floor(Math.random() * bigLetters.length)
+            myLetters = bigLetters[randomN]
+            myUppercase.push(myLetters)
+        }
+        console.log(myUppercase)
+    }
+
+    // let myPassword = []
+    // for(let i = 1; i <= linerNumber; i++){
+    //     myPassword.push(i)
+        
+    // }
+    // console.log(myPassword)
+    // let randomNumber = Math.floor(Math.random() * bigLetters.length)
+    // console.log(bigLetters[randomNumber])
+})
