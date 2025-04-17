@@ -201,6 +201,8 @@ let bigLetters = [
     "O", "P", "Q", "R", "S", "T", "U",
     "V", "W", "X", "Y", "Z"
 ];
+
+
 let smallLetters = [
     "a", "b", "c", "d", "e", "f", "g",
     "h", "i", "j", "k", "l", "m", "n",
@@ -217,24 +219,49 @@ let specialSymbols = [
 
 let generateButton = document.querySelector(".button")
 
+
 generateButton.addEventListener("click", function(event){
     if(realButtonFirst.checked){
-        let myLetters
+        let myBigLetters
         let myUppercase = []
         for(let i = 1; i <= linerNumber; i++){
-            let randomN = Math.floor(Math.random() * bigLetters.length)
-            myLetters = bigLetters[randomN]
-            myUppercase.push(myLetters)
+            let randomNumber = Math.floor(Math.random() * bigLetters.length)
+            myBigLetters = bigLetters[randomNumber]
+            myUppercase.push(myBigLetters)
         }
         console.log(myUppercase)
     }
 
-    // let myPassword = []
-    // for(let i = 1; i <= linerNumber; i++){
-    //     myPassword.push(i)
-        
-    // }
-    // console.log(myPassword)
-    // let randomNumber = Math.floor(Math.random() * bigLetters.length)
-    // console.log(bigLetters[randomNumber])
+    if(realButtonSecond.checked){
+        let mySmallLetters
+        let myLowercase = []
+        for(let i = 1; i <= linerNumber; i++){
+            let randomNumber = Math.floor(Math.random() * smallLetters.length)
+            mySmallLetters = smallLetters[randomNumber]
+            myLowercase.push(mySmallLetters)
+        }
+        console.log(myLowercase)
+    }
+
+    if(realButtonThird.checked){
+        let myNumber
+        let myNumbers = []
+        for(let i = 1; i <= linerNumber; i++){
+            let randomNumber = Math.floor(Math.random() * numbers.length)
+            myNumber = numbers[randomNumber]
+            myNumbers.push(myNumber)
+        }
+        console.log(myNumbers)
+    }
+
+    if(realButtonFourth.checked){
+        let mySymbol
+        let mySymbols = []
+        for(let i = 1; i <= linerNumber; i++){
+            let randomNumber = Math.floor(Math.random() * specialSymbols.length)
+            mySymbol = specialSymbols[randomNumber]
+            mySymbols.push(mySymbol)
+        }
+        console.log(mySymbols)
+    }
 })
