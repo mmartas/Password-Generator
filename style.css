@@ -29,7 +29,7 @@ body {
 }
 
 .card {
-    width: 400px;
+    width: 450px;
     height: auto;
     display: flex;
     flex-direction: column;
@@ -58,10 +58,10 @@ body {
     width: 100%;
     padding: 1rem;
     background-color: var(--background-card);
+    gap: 1rem;
 }
 
 .ready__password .ready__text {
-    text-transform: uppercase;
     color: var(--dark-letters);
     font-size: 2rem;
     font-weight: 800;

@@ -436,5 +436,21 @@ generateButton.addEventListener("click", function(event){
     }
 
     allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols, ...realMissingLetters]
-    console.log(allCharacters)
+    //console.log(allCharacters)
+
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    shuffleArray(allCharacters)
+
+    let finalPassword = allCharacters.join("")
+    //console.log(finalPassword)
+
+    let placeForPassword = document.getElementById("copy-text")
+    placeForPassword.textContent = finalPassword
 })
