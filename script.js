@@ -233,7 +233,7 @@ let myNumbers = []
 let mySymbol
 let mySymbols = []
 
-
+let myNarrow = document.querySelector(".narrow")
 
 generateButton.addEventListener("click", function(event){
     allCharacters.length = 0
@@ -453,4 +453,6 @@ generateButton.addEventListener("click", function(event){
 
     let placeForPassword = document.getElementById("copy-text")
     placeForPassword.textContent = finalPassword
+
+    myNarrow.classList.add("out")
 })

@@ -292,15 +292,18 @@ input[type="range"]::-webkit-slider-thumb:active {
     background-color: hsl(120, 100%, 60%);
 }
 
+
+
 .button {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     height: 60px;
-    border: 2px solid var(--light-green);
     background-color: var(--light-green);
     margin-top: 30px;
+    cursor: pointer;
+    position: relative;
 }
 
 .button .button__title {
@@ -312,3 +315,29 @@ input[type="range"]::-webkit-slider-thumb:active {
 .button .button__title p {
     margin: 0;
 }
+
+.narrow {
+    transition: all 1s;
+}
+
+.button::before {
+    content: "";
+    height: 100%;
+    width: 20px;
+    background-color: white;
+    position: absolute;
+    left: 0;
+}
+
+.button:hover .narrow {
+    transform: translateX(100px);
+}
+
+.narrow.out {
+    transform: translateX(200px) !important;
+}
+
+
+
+
+    
