@@ -17,21 +17,28 @@ let range = document.querySelector("[type=range]")
 let progressBefore = document.querySelector(".progress__before")
 let progressAfter = document.querySelector(".progress__after")
 let placeForNumbersFromLiner = document.querySelector(".pForLinerNumber")
-range.addEventListener("input", function(event){
-    let percent = ((event.target.value - event.target.min) / (event.target.max - event.target.min)) * 100;
+function updateLiner(value){
+    let percent = ((value - range.min) / (range.max - range.min)) * 100;
 
-    progressBefore.style = `width:${percent}%`;
-    progressAfter.style = `width:${100-percent}%`;
+    progressBefore.style.width = `${percent}%`;
+    progressAfter.style.width = `${100 - percent}%`;
 
-    placeForNumbersFromLiner.textContent = ""
-    placeForNumbersFromLiner.textContent = event.target.value
-    saveLinerNumber(event.target.value)
-    if(countOfChecked().length === 0 && linerNumber > 5) {
-        clearAllClassesSquare()
+    placeForNumbersFromLiner.textContent = value;
+    saveLinerNumber(value);
+
+    if (countOfChecked().length === 0 && value > 5) {
+        clearAllClassesSquare();
     } else {
-        checkingCheckedIncludes()
+        checkingCheckedIncludes();
     }
+}
+range.addEventListener("input", function(event){
+    updateLiner(event.target.value)
 })
+
+window.addEventListener("DOMContentLoaded", () => {
+    updateLiner(range.value);
+});
 
 // ZJIŠTĚNÍ POČTU NA POSUVNÍKU
 let linerNumber = 0

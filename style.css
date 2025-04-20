@@ -298,7 +298,6 @@ input[type="range"]::-webkit-slider-thumb:active {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
     height: 60px;
     background-color: var(--light-green);
     margin-top: 30px;
@@ -310,6 +309,7 @@ input[type="range"]::-webkit-slider-thumb:active {
     font-size: 1rem;
     text-transform: uppercase;
     font-weight: 800;
+
 }
 
 .button .button__title p {
@@ -318,19 +318,11 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 .narrow {
     transition: all 1s;
-}
-
-.button::before {
-    content: "";
-    height: 100%;
-    width: 20px;
-    background-color: white;
-    position: absolute;
-    left: 0;
+    transform: translateX(20px);
 }
 
 .button:hover .narrow {
-    transform: translateX(100px);
+    transform: translateX(60px);
 }
 
 .narrow.out {
