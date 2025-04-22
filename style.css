@@ -329,6 +329,15 @@ input[type="range"]::-webkit-slider-thumb:active {
     transform: translateX(200px) !important;
 }
 
+.mistake-info {
+    color: hsl(0, 100%, 60%);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 0;
+    padding-top: 1rem;
+}
+
 
 
 

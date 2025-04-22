@@ -242,12 +242,22 @@ let mySymbols = []
 
 let myNarrow = document.querySelector(".narrow")
 
+let mistakePlace = document.querySelector(".mistake_place")
+
 generateButton.addEventListener("click", function(event){
+    mistakePlace.textContent = ""
+
     allCharacters.length = 0
     myUppercase.length = 0
     myLowercase.length = 0
     myNumbers.length = 0
     mySymbols.length = 0
+
+    if(countOfChecked().length > linerNumber){
+        mistakePlace.textContent = "error"
+        mistakePlace.classList.add("mistake-info")
+    }
+
     if(countOfChecked().length === 1){
         if(realButtonFirst.checked){
             for(let i = 1; i <= linerNumber; i++){
