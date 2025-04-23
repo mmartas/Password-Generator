@@ -33,6 +33,7 @@ function updateLiner(value){
     }
 }
 range.addEventListener("input", function(event){
+    clearAllClassesSquare()
     updateLiner(event.target.value)
 })
 
@@ -52,7 +53,7 @@ function checkingCheckedIncludes() {
         clearAllClassesSquare()
     }
 
-    if(linerNumber <= 5 && countOfChecked().length <= 4){
+    if(linerNumber <= 5 && linerNumber >= 1 && countOfChecked().length <= 4){
         firstSquareColor()
     }
 
