@@ -1,16 +1,27 @@
 // KOPÍROVÁNÍ HESLA
 let copyIcon = document.getElementById("copyIcon")
+let textField = document.querySelector("#copy-text")
 function copyPassword() {
     const text = document.getElementById("copy-text").innerText;
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        copyIcon.classList.remove("fa-regular")
-        copyIcon.classList.add("fa-solid")
-      })
-      .catch(err => {
-        console.error("Kopírování selhalo:", err);
-      });
+    if(text === "---------------------"){
+        textField.style.color = "hsl(0, 100%, 60%)"
+        return
     }
+
+    if(copyIcon.classList.contains("fa-regular")){
+        navigator.clipboard.writeText(text).then(() => {
+            copyIcon.classList.remove("fa-regular")
+            copyIcon.classList.add("fa-solid")
+            textField.style.color = "var(--light-green)"
+        });
+    }
+
+    if(copyIcon.classList.contains("fa-solid")){
+        copyIcon.classList.remove("fa-solid")
+        copyIcon.classList.add("fa-regular")
+        textField.style.color = "var(--dark-letters)"
+    }
+}
 
 // POSUVNÍK S VOLBOU DÉLKY HESLA
 let range = document.querySelector("[type=range]")
@@ -49,6 +60,10 @@ function saveLinerNumber(value) {
 
 // PODLE POČTU NA POSUVNÍKU A ZAŠKRTNUTÝCH PODMÍNEK VYPSÁNÍ BEZPEČNOSTI HESLA
 function checkingCheckedIncludes() {
+    if(myNarrow.classList.contains("out")){
+        myNarrow.classList.remove("out")
+    }
+
     if(countOfChecked().length === 0 && linerNumber > 5) {
         clearAllClassesSquare()
     }
@@ -247,6 +262,7 @@ let mistakePlace = document.querySelector(".mistake_place")
 
 generateButton.addEventListener("click", function(event){
     mistakePlace.textContent = ""
+    textField.style.color = "var(--dark-letters)"
 
     allCharacters.length = 0
     myUppercase.length = 0
@@ -255,222 +271,233 @@ generateButton.addEventListener("click", function(event){
     mySymbols.length = 0
 
     if(countOfChecked().length > linerNumber){
-        mistakePlace.textContent = "error"
+        mistakePlace.textContent = "invalid requests"
         mistakePlace.classList.add("mistake-info")
-    }
-
-    if(countOfChecked().length === 1){
-        if(realButtonFirst.checked){
-            for(let i = 1; i <= linerNumber; i++){
-                let randomNumber = Math.floor(Math.random() * bigLetters.length)
-                myBigLetters = bigLetters[randomNumber]
-                myUppercase.push(myBigLetters)
+        textField.textContent = "---------------------"
+    } else {
+        textField.classList.remove("red-color")
+        if(countOfChecked().length === 1){
+            if(realButtonFirst.checked){
+                for(let i = 1; i <= linerNumber; i++){
+                    let randomNumber = Math.floor(Math.random() * bigLetters.length)
+                    myBigLetters = bigLetters[randomNumber]
+                    myUppercase.push(myBigLetters)
+                }
+                //console.log(myUppercase)
             }
-            //console.log(myUppercase)
+        
+            if(realButtonSecond.checked){
+                for(let i = 1; i <= linerNumber; i++){
+                    let randomNumber = Math.floor(Math.random() * smallLetters.length)
+                    mySmallLetters = smallLetters[randomNumber]
+                    myLowercase.push(mySmallLetters)
+                }
+                //console.log(myLowercase)
+            }
+        
+            if(realButtonThird.checked){
+                for(let i = 1; i <= linerNumber; i++){
+                    let randomNumber = Math.floor(Math.random() * numbers.length)
+                    myNumber = numbers[randomNumber]
+                    myNumbers.push(myNumber)
+                }
+                //console.log(myNumbers)
+            }
+        
+            if(realButtonFourth.checked){
+                for(let i = 1; i <= linerNumber; i++){
+                    let randomNumber = Math.floor(Math.random() * specialSymbols.length)
+                    mySymbol = specialSymbols[randomNumber]
+                    mySymbols.push(mySymbol)
+                }
+                //console.log(mySymbols)
+            }
+    
+            allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+            //console.log(allCharacters)
+        } else if (countOfChecked().length === 2) {
+            if(realButtonFirst.checked){
+                for(let i = 1; i <= (linerNumber / 2); i++){
+                    let randomNumber = Math.floor(Math.random() * bigLetters.length)
+                    myBigLetters = bigLetters[randomNumber]
+                    myUppercase.push(myBigLetters)
+                }
+                //console.log(myUppercase)
+            }
+        
+            if(realButtonSecond.checked){
+                for(let i = 1; i <= (linerNumber / 2); i++){
+                    let randomNumber = Math.floor(Math.random() * smallLetters.length)
+                    mySmallLetters = smallLetters[randomNumber]
+                    myLowercase.push(mySmallLetters)
+                }
+                //console.log(myLowercase)
+            }
+        
+            if(realButtonThird.checked){
+                for(let i = 1; i <= (linerNumber / 2); i++){
+                    let randomNumber = Math.floor(Math.random() * numbers.length)
+                    myNumber = numbers[randomNumber]
+                    myNumbers.push(myNumber)
+                }
+                //console.log(myNumbers)
+            }
+        
+            if(realButtonFourth.checked){
+                for(let i = 1; i <= (linerNumber / 2); i++){
+                    let randomNumber = Math.floor(Math.random() * specialSymbols.length)
+                    mySymbol = specialSymbols[randomNumber]
+                    mySymbols.push(mySymbol)
+                }
+                //console.log(mySymbols)
+            }
+    
+            allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+            //console.log(allCharacters)
+        } else if (countOfChecked().length === 3) {
+            if(realButtonFirst.checked){
+                for(let i = 1; i <= (linerNumber / 3); i++){
+                    let randomNumber = Math.floor(Math.random() * bigLetters.length)
+                    myBigLetters = bigLetters[randomNumber]
+                    myUppercase.push(myBigLetters)
+                }
+                //console.log(myUppercase)
+            }
+        
+            if(realButtonSecond.checked){
+                for(let i = 1; i <= (linerNumber / 3); i++){
+                    let randomNumber = Math.floor(Math.random() * smallLetters.length)
+                    mySmallLetters = smallLetters[randomNumber]
+                    myLowercase.push(mySmallLetters)
+                }
+                //console.log(myLowercase)
+            }
+        
+            if(realButtonThird.checked){
+                for(let i = 1; i <= (linerNumber / 3); i++){
+                    let randomNumber = Math.floor(Math.random() * numbers.length)
+                    myNumber = numbers[randomNumber]
+                    myNumbers.push(myNumber)
+                }
+                //console.log(myNumbers)
+            }
+        
+            if(realButtonFourth.checked){
+                for(let i = 1; i <= (linerNumber / 3); i++){
+                    let randomNumber = Math.floor(Math.random() * specialSymbols.length)
+                    mySymbol = specialSymbols[randomNumber]
+                    mySymbols.push(mySymbol)
+                }
+                //console.log(mySymbols)
+            }
+    
+            allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+            //console.log(allCharacters)
+        } else if (countOfChecked().length === 4) {
+            if(realButtonFirst.checked){
+                for(let i = 1; i <= (linerNumber / 4); i++){
+                    let randomNumber = Math.floor(Math.random() * bigLetters.length)
+                    myBigLetters = bigLetters[randomNumber]
+                    myUppercase.push(myBigLetters)
+                }
+                //console.log(myUppercase)
+            }
+        
+            if(realButtonSecond.checked){
+                for(let i = 1; i <= (linerNumber / 4); i++){
+                    let randomNumber = Math.floor(Math.random() * smallLetters.length)
+                    mySmallLetters = smallLetters[randomNumber]
+                    myLowercase.push(mySmallLetters)
+                }
+                //console.log(myLowercase)
+            }
+        
+            if(realButtonThird.checked){
+                for(let i = 1; i <= (linerNumber / 4); i++){
+                    let randomNumber = Math.floor(Math.random() * numbers.length)
+                    myNumber = numbers[randomNumber]
+                    myNumbers.push(myNumber)
+                }
+                //console.log(myNumbers)
+            }
+        
+            if(realButtonFourth.checked){
+                for(let i = 1; i <= (linerNumber / 4); i++){
+                    let randomNumber = Math.floor(Math.random() * specialSymbols.length)
+                    mySymbol = specialSymbols[randomNumber]
+                    mySymbols.push(mySymbol)
+                }
+                //console.log(mySymbols)
+            }
+            allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+            //console.log(allCharacters.length)
         }
     
-        if(realButtonSecond.checked){
-            for(let i = 1; i <= linerNumber; i++){
-                let randomNumber = Math.floor(Math.random() * smallLetters.length)
-                mySmallLetters = smallLetters[randomNumber]
-                myLowercase.push(mySmallLetters)
+        let missingCount = linerNumber - allCharacters.length
+    
+        let missingLetters = []
+    
+        let realMissingLetters = []
+    
+        if(missingCount >= 1){
+            if(realButtonFirst.checked){
+                missingLetters.push(bigLetters)
             }
-            //console.log(myLowercase)
+            if(realButtonSecond.checked){
+                missingLetters.push(smallLetters)
+            }
+            if(realButtonThird.checked){
+                missingLetters.push(numbers)
+            }
+            if(realButtonFourth.checked){
+                missingLetters.push(specialSymbols)
+            }
+            //console.log(missingLetters)
+    
+            for(let i = 0; i < missingCount; i++){
+                let randomNumber = Math.floor(Math.random() * missingLetters.length)
+                let oneSet = missingLetters[randomNumber]
+    
+                let randomNum = Math.floor(Math.random() * oneSet.length)
+                let oneChar = oneSet[randomNum]
+                
+                realMissingLetters.push(oneChar)
+            }
+    
+            //console.log(realMissingLetters)
+    
+            // allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols, ...realMissingLetters]
+            // console.log(allCharacters)
         }
     
-        if(realButtonThird.checked){
-            for(let i = 1; i <= linerNumber; i++){
-                let randomNumber = Math.floor(Math.random() * numbers.length)
-                myNumber = numbers[randomNumber]
-                myNumbers.push(myNumber)
-            }
-            //console.log(myNumbers)
-        }
-    
-        if(realButtonFourth.checked){
-            for(let i = 1; i <= linerNumber; i++){
-                let randomNumber = Math.floor(Math.random() * specialSymbols.length)
-                mySymbol = specialSymbols[randomNumber]
-                mySymbols.push(mySymbol)
-            }
-            //console.log(mySymbols)
-        }
-
-        allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
+        allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols, ...realMissingLetters]
         //console.log(allCharacters)
-    } else if (countOfChecked().length === 2) {
-        if(realButtonFirst.checked){
-            for(let i = 1; i <= (linerNumber / 2); i++){
-                let randomNumber = Math.floor(Math.random() * bigLetters.length)
-                myBigLetters = bigLetters[randomNumber]
-                myUppercase.push(myBigLetters)
+    
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                let j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
-            //console.log(myUppercase)
+            return array;
         }
     
-        if(realButtonSecond.checked){
-            for(let i = 1; i <= (linerNumber / 2); i++){
-                let randomNumber = Math.floor(Math.random() * smallLetters.length)
-                mySmallLetters = smallLetters[randomNumber]
-                myLowercase.push(mySmallLetters)
-            }
-            //console.log(myLowercase)
-        }
+        shuffleArray(allCharacters)
     
-        if(realButtonThird.checked){
-            for(let i = 1; i <= (linerNumber / 2); i++){
-                let randomNumber = Math.floor(Math.random() * numbers.length)
-                myNumber = numbers[randomNumber]
-                myNumbers.push(myNumber)
-            }
-            //console.log(myNumbers)
-        }
+        let finalPassword = allCharacters.join("")
+        //console.log(finalPassword)
     
-        if(realButtonFourth.checked){
-            for(let i = 1; i <= (linerNumber / 2); i++){
-                let randomNumber = Math.floor(Math.random() * specialSymbols.length)
-                mySymbol = specialSymbols[randomNumber]
-                mySymbols.push(mySymbol)
-            }
-            //console.log(mySymbols)
-        }
-
-        allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
-        //console.log(allCharacters)
-    } else if (countOfChecked().length === 3) {
-        if(realButtonFirst.checked){
-            for(let i = 1; i <= (linerNumber / 3); i++){
-                let randomNumber = Math.floor(Math.random() * bigLetters.length)
-                myBigLetters = bigLetters[randomNumber]
-                myUppercase.push(myBigLetters)
-            }
-            //console.log(myUppercase)
-        }
+        let placeForPassword = document.getElementById("copy-text")
+        placeForPassword.textContent = finalPassword
     
-        if(realButtonSecond.checked){
-            for(let i = 1; i <= (linerNumber / 3); i++){
-                let randomNumber = Math.floor(Math.random() * smallLetters.length)
-                mySmallLetters = smallLetters[randomNumber]
-                myLowercase.push(mySmallLetters)
-            }
-            //console.log(myLowercase)
-        }
-    
-        if(realButtonThird.checked){
-            for(let i = 1; i <= (linerNumber / 3); i++){
-                let randomNumber = Math.floor(Math.random() * numbers.length)
-                myNumber = numbers[randomNumber]
-                myNumbers.push(myNumber)
-            }
-            //console.log(myNumbers)
-        }
-    
-        if(realButtonFourth.checked){
-            for(let i = 1; i <= (linerNumber / 3); i++){
-                let randomNumber = Math.floor(Math.random() * specialSymbols.length)
-                mySymbol = specialSymbols[randomNumber]
-                mySymbols.push(mySymbol)
-            }
-            //console.log(mySymbols)
-        }
-
-        allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
-        //console.log(allCharacters)
-    } else if (countOfChecked().length === 4) {
-        if(realButtonFirst.checked){
-            for(let i = 1; i <= (linerNumber / 4); i++){
-                let randomNumber = Math.floor(Math.random() * bigLetters.length)
-                myBigLetters = bigLetters[randomNumber]
-                myUppercase.push(myBigLetters)
-            }
-            //console.log(myUppercase)
-        }
-    
-        if(realButtonSecond.checked){
-            for(let i = 1; i <= (linerNumber / 4); i++){
-                let randomNumber = Math.floor(Math.random() * smallLetters.length)
-                mySmallLetters = smallLetters[randomNumber]
-                myLowercase.push(mySmallLetters)
-            }
-            //console.log(myLowercase)
-        }
-    
-        if(realButtonThird.checked){
-            for(let i = 1; i <= (linerNumber / 4); i++){
-                let randomNumber = Math.floor(Math.random() * numbers.length)
-                myNumber = numbers[randomNumber]
-                myNumbers.push(myNumber)
-            }
-            //console.log(myNumbers)
-        }
-    
-        if(realButtonFourth.checked){
-            for(let i = 1; i <= (linerNumber / 4); i++){
-                let randomNumber = Math.floor(Math.random() * specialSymbols.length)
-                mySymbol = specialSymbols[randomNumber]
-                mySymbols.push(mySymbol)
-            }
-            //console.log(mySymbols)
-        }
-        allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols]
-        //console.log(allCharacters.length)
+        
+        myNarrow.classList.remove("out")
+       
+        myNarrow.classList.add("out")
     }
 
-    let missingCount = linerNumber - allCharacters.length
-
-    let missingLetters = []
-
-    let realMissingLetters = []
-
-    if(missingCount >= 1){
-        if(realButtonFirst.checked){
-            missingLetters.push(bigLetters)
-        }
-        if(realButtonSecond.checked){
-            missingLetters.push(smallLetters)
-        }
-        if(realButtonThird.checked){
-            missingLetters.push(numbers)
-        }
-        if(realButtonFourth.checked){
-            missingLetters.push(specialSymbols)
-        }
-        //console.log(missingLetters)
-
-        for(let i = 0; i < missingCount; i++){
-            let randomNumber = Math.floor(Math.random() * missingLetters.length)
-            let oneSet = missingLetters[randomNumber]
-
-            let randomNum = Math.floor(Math.random() * oneSet.length)
-            let oneChar = oneSet[randomNum]
-            
-            realMissingLetters.push(oneChar)
-        }
-
-        //console.log(realMissingLetters)
-
-        // allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols, ...realMissingLetters]
-        // console.log(allCharacters)
-    }
-
-    allCharacters = [...myUppercase, ...myLowercase, ...myNumbers, ...mySymbols, ...realMissingLetters]
-    //console.log(allCharacters)
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    }
-
-    shuffleArray(allCharacters)
-
-    let finalPassword = allCharacters.join("")
-    //console.log(finalPassword)
-
-    let placeForPassword = document.getElementById("copy-text")
-    placeForPassword.textContent = finalPassword
-
-    myNarrow.classList.add("out")
+    
 })
+
+if(myNarrow.classList.contains("out")){
+    console.log("ano")
+}
